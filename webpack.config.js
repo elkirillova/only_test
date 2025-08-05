@@ -10,6 +10,7 @@ const config = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'js/[name].[contenthash].js',
+		publicPath: '/only_test/',
 		clean: true,
 	},
 	resolve: {
