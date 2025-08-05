@@ -1,0 +1,56 @@
+{
+	"name": "only_test",
+	"version": "1.0.0",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "webpack serve --mode development",
+		"build": "webpack --mode production",
+		"lint": "eslint \"src/**/*.{ts,tsx}\"",
+		"lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
+		"format": "prettier --write 'src/**/*.{ts,tsx,scss}'",
+		"lint:scss": "stylelint \"src/**/*.{css,scss}\"",
+		"lint:scss:fix": "stylelint \"src/**/*.{css,scss}\" --fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/elkirillova/only_test.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/elkirillova/only_test/issues"
+	},
+	"homepage": "https://github.com/elkirillova/only_test#readme",
+	"description": "",
+	"devDependencies": {
+		"@types/react": "^19.1.9",
+		"@types/react-dom": "^19.1.7",
+		"@typescript-eslint/eslint-plugin": "^8.39.0",
+		"@typescript-eslint/parser": "^8.39.0",
+		"css-loader": "^7.1.2",
+		"eslint": "^9.32.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-prettier": "^5.5.3",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-react-hooks": "^5.2.0",
+		"html-webpack-plugin": "^5.6.3",
+		"mini-css-extract-plugin": "^2.9.3",
+		"prettier": "^3.6.2",
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
+		"sass": "^1.89.2",
+		"sass-loader": "^16.0.5",
+		"style-loader": "^4.0.0",
+		"stylelint": "^16.23.0",
+		"stylelint-config-standard-scss": "^15.0.1",
+		"stylelint-scss": "^6.12.1",
+		"ts-loader": "^9.5.2",
+		"typescript": "^5.9.2",
+		"webpack": "^5.101.0",
+		"webpack-cli": "^6.0.1",
+		"webpack-dev-server": "^5.2.2"
+	}
+}
