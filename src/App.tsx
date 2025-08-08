@@ -1,7 +1,9 @@
+import { Layout } from './Layout'
+
 export default function App() {
 	return (
-		<div>
+		<Layout>
 			<h1>Hello!</h1>
-		</div>
-	);
+		</Layout>
+	)
 }
