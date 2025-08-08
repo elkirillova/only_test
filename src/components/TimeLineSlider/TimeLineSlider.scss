@@ -1,0 +1,19 @@
+.timeline {
+	background-color: aquamarine;
+}
+
+.timeline-period-slider {
+	&__slide {
+		width: 100px;
+		height: 200px;
+		border: 1px solid coral;
+	}
+}
+
+.timeline-event-slider {
+	&__slide {
+		width: 100px;
+		height: 100px;
+		border: 1px solid rgb(156, 27, 98);
+	}
+}
