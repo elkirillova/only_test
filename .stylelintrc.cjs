@@ -8,4 +8,4 @@ module.exports = {
 		'property-no-unknown': [true, { ignoreProperties: ['composes'] }],
 	},
 	ignoreFiles: ['**/*.js', '**/*.ts', '**/*.tsx'],
-};
+}

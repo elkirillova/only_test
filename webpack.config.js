@@ -1,9 +1,9 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import path from 'path'
+import { fileURLToPath } from 'url'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const config = {
 	entry: './src/main.tsx',
@@ -15,11 +15,14 @@ const config = {
 	},
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', '.css'],
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
 	},
 	module: {
 		rules: [
 			{
-				test: /\.(ts|tsx)$/,
+				test: /\.(ts|tsx|js|jsx)$/,
 				exclude: /node_modules/,
 				use: {
 					loader: 'ts-loader',
@@ -38,11 +41,22 @@ const config = {
 						: 'style-loader',
 					'css-loader',
 					'sass-loader',
+					// {
+					// 	loader: 'sass-loader',
+					// 	options: {
+					// 		sassOptions: {
+					// 			includePaths: [path.resolve(__dirname, 'src')],
+					// 		},
+					// 	},
+					// },
 				],
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: 'asset/resource',
+				generator: {
+					filename: 'assets/images/[hash][ext][query]',
+				},
 			},
 		],
 	},
@@ -58,10 +72,12 @@ const config = {
 		static: {
 			directory: path.join(__dirname, 'dist'),
 		},
+		historyApiFallback: true,
 		compress: true,
 		port: 3000,
 		open: true,
+		hot: true,
 	},
-};
+}
 
-export default config;
+export default config
