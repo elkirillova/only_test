@@ -8,6 +8,7 @@ export const useMediaQuery = (query: string) => {
 		const listener = (event: MediaQueryListEvent) => setMatches(event.matches)
 
 		mediaQueryList.addEventListener('change', listener)
+
 		return () => mediaQueryList.removeEventListener('change', listener)
 	}, [query])
 
