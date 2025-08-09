@@ -27,7 +27,7 @@
 }
 
 .timeline-event-slider {
-	&__slide {
+	&__slide.swiper-slide {
 		width: 166px;
 		height: auto;
 
@@ -106,7 +106,7 @@
 				width: 8px;
 				height: 12px;
 				background-color: $color-blue;
-				mask-image: url('/icons/arrow.svg');
+				mask-image: url('../assets/icons/arrow.svg');
 				mask-repeat: no-repeat;
 				mask-position: center;
 				mask-size: contain;
