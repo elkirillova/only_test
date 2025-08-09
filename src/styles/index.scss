@@ -1,8 +1,9 @@
 @forward 'colors';
 @forward 'typography';
 @forward 'reset';
+@forward 'mixins';
 @forward 'global';
 
 // components
 @forward '../components/TimeLineSlider/TimeLineSlider';
-@forward '../components/ui/container/Container';
+@forward '../components/ui/Container/Container';
