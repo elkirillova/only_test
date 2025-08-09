@@ -1,5 +1,9 @@
-.timeline {
-	background-color: aquamarine;
+@use '@/styles/colors' as *;
+@use '@/styles/mixins' as *;
+
+:root {
+	--swiper-navigation-size: 40px;
+	--swiper-navigation-sides-offset: 20px;
 }
 
 .timeline-period-slider {
@@ -10,10 +14,103 @@
 	}
 }
 
+.timeline-event-slider-wrapper {
+	margin-right: calc(-1 * var(--container-inline-padding));
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+
+	@include breakpoint(l) {
+		margin-right: 0;
+	}
+}
+
 .timeline-event-slider {
 	&__slide {
-		width: 100px;
-		height: 100px;
-		border: 1px solid rgb(156, 27, 98);
+		width: 166px;
+		height: auto;
+
+		@include breakpoint(md) {
+			width: 220px;
+		}
+
+		@include breakpoint(lg) {
+			width: 320px;
+		}
+
+		&-title {
+			margin-bottom: 15px;
+			font-family: 'Bebas Neue', sans-serif;
+			font-size: 16px;
+			line-height: 1.2;
+			text-transform: uppercase;
+			color: $color-blue;
+
+			@include breakpoint(lg) {
+				font-size: 25px;
+			}
+		}
+
+		&-desc {
+			font-size: 14px;
+			line-height: 1.45;
+			color: $color-dark-blue;
+
+			@include breakpoint(lg) {
+				font-size: 20px;
+				line-height: 1.5;
+			}
+		}
+	}
+
+	&__nav {
+		&-btn {
+			position: relative;
+			flex-shrink: 0;
+			width: var(--swiper-navigation-size);
+			height: var(--swiper-navigation-size);
+			border-radius: 100%;
+			background-color: $color-white;
+			box-shadow: 0 0 20px 5px rgb(56 119 238 / 15%);
+			transition: opacity 0.3s ease;
+			text-indent: -9999px;
+			cursor: pointer;
+
+			&:hover {
+				opacity: 0.8;
+			}
+
+			&:active {
+				opacity: 1;
+			}
+
+			&.swiper-button-disabled {
+				pointer-events: none;
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			&--next {
+				&::after {
+					transform: rotate(180deg);
+				}
+			}
+
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				inset: 0;
+				margin: auto;
+				width: 8px;
+				height: 12px;
+				background-color: $color-blue;
+				mask-image: url('/icons/arrow.svg');
+				mask-repeat: no-repeat;
+				mask-position: center;
+				mask-size: contain;
+			}
+		}
 	}
 }

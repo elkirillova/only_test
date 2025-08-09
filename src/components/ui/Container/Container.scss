@@ -1,6 +1,13 @@
+@use '@/styles/mixins' as *;
+
 .container {
 	margin: 0 auto;
-	max-width: 1440px; //TODO::
+	max-width: 1440px;
 	width: 100%;
-	padding: 0 15px;
+	padding: 0 var(--container-inline-padding);
+	outline: 1px solid rgb(211 5 125);
+
+	@include breakpoint(lg) {
+		padding: 0 var(--container-inline-padding);
+	}
 }
