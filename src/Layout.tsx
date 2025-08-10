@@ -5,11 +5,11 @@ import { Container } from './components'
 export const Layout = ({ children }: { children: ReactNode }) => {
 	return (
 		<>
-			<header>header</header>
-			<main>
+			<header className="header"></header>
+			<main className="main">
 				<Container>{children}</Container>
 			</main>
-			<footer>footer</footer>
+			<footer className="footer"></footer>
 		</>
 	)
 }
