@@ -182,22 +182,15 @@ export function TimelinePeriodSlider({ slides, onChangeActiveIndex }: CircularSl
 
 	return (
 		<div className="timeline-period-slider">
-			<div
-				className={`timeline-period-slider__container ${isMobile ? 'is-mobile' : 'is-desktop'}`}
-			>
+			<div className="timeline-period-slider__container">
 				<div className="timeline__years">
 					<span className="timeline__year timeline__year--start">{years[0]}</span>
 					<span className="timeline__year timeline__year--end">{years[1]}</span>
 				</div>
+				<span className="line line--horizontal" aria-hidden="true"></span>
 				<div
-					className={`timeline-period-slider__content`}
+					className={`timeline-period-slider__content ${isMobile ? 'is-mobile' : 'is-desktop'}`}
 					ref={containerRef}
-					style={{
-						position: 'relative',
-						width: '100%',
-						height: '100%',
-						overflow: 'visible',
-					}}
 				>
 					{slides.map((slide, i) => (
 						<div

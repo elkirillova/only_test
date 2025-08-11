@@ -7,6 +7,43 @@
 }
 
 .timeline {
+	position: relative;
+
+	@include breakpoint(l) {
+		padding: 100px 0;
+	}
+
+	&__heading {
+		position: relative;
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.2;
+		color: $color-dark-blue;
+
+		@include breakpoint(l) {
+			margin-left: 73px;
+			position: absolute;
+			font-size: 56px;
+		}
+
+		&:before {
+			content: '';
+			position: absolute;
+			display: block;
+			width: 5px;
+			height: 100%;
+			//background-color: $color-fucsia;
+			background: 
+				/* Левая часть 1.5px */
+				linear-gradient(90deg, $color-fucsia, $color-fucsia) no-repeat 0 0 / 1.5px 100%,
+				/* Размытие 1px */ linear-gradient(90deg, $color-fucsia, $color-blue) no-repeat
+					1.5px 0 / 1px 100%,
+				/* Правая часть 2.5px */ linear-gradient(90deg, $color-blue, $color-blue) no-repeat
+					2.5px 0 / 2.5px 100%;
+			transform: translateX(-75px);
+		}
+	}
+
 	&__years {
 		display: flex;
 		gap: 30px;
@@ -50,12 +87,20 @@
 
 	@include breakpoint(l) {
 		margin-bottom: 56px;
-		padding: 0 60px;
+		padding-top: 60px;
 	}
 
 	&__container {
 		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__content {
+		position: relative;
+
 		transition: transform 0.5s ease;
+		overflow: visible;
 
 		&.is-mobile {
 			display: flex;
@@ -70,13 +115,6 @@
 			border-radius: 100%;
 			border: 1px solid $color-dark-blue-opacity-20;
 		}
-	}
-
-	&__content {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		overflow: visible;
 
 		& > div {
 			position: absolute; /* контейнеры для кнопок */
@@ -173,6 +211,10 @@
 	&__nav {
 		align-self: flex-start;
 
+		@include breakpoint(l) {
+			margin-left: 80px;
+		}
+
 		&-btns {
 			margin-top: 20px;
 			display: flex;
@@ -262,6 +304,7 @@
 
 	@include breakpoint(l) {
 		margin-right: 0;
+		padding: 0 18px;
 	}
 }
 
