@@ -18,6 +18,7 @@ export function TimelinePeriodSlider({ slides, onChangeActiveIndex }: CircularSl
 	const [isMobile, setIsMobile] = useState(window.innerWidth < BREAKPOINT)
 	const [currentIndex, setCurrentIndex] = useState(0)
 	const [showLabelIndex, setShowLabelIndex] = useState<number | null>(null)
+	const [years, setYears] = useState(slides[0].range)
 
 	useEffect(() => {
 		animateToIndex(0)
@@ -61,6 +62,24 @@ export function TimelinePeriodSlider({ slides, onChangeActiveIndex }: CircularSl
 		})
 	}, [isMobile, slides])
 
+	const animateYears = (fromRange: number[], toRange: number[], duration = 0.6) => {
+		const obj = {
+			start: fromRange[0],
+			end: fromRange[1],
+		}
+
+		gsap.to(obj, {
+			start: toRange[0],
+			end: toRange[1],
+			duration,
+			ease: 'power2.inOut',
+			onUpdate: () => {
+				// во время анимации плавно меняем цифры
+				setYears([Math.round(obj.start), Math.round(obj.end)])
+			},
+		})
+	}
+
 	const animateToIndex = (newIndex: number) => {
 		if (isMobile) {
 			if (!containerRef.current) return
@@ -81,6 +100,9 @@ export function TimelinePeriodSlider({ slides, onChangeActiveIndex }: CircularSl
 
 		//движение по часовой, если diff больше половины круга (слева), иначе против часовой (справа)
 		const clockwise = diff >= totalSlides / 2
+
+		// запуск анимации лет одновременно с движением
+		animateYears(slides[currentIndex].range, slides[newIndex].range)
 
 		function getArcPath(
 			startX: number,
@@ -163,6 +185,10 @@ export function TimelinePeriodSlider({ slides, onChangeActiveIndex }: CircularSl
 			<div
 				className={`timeline-period-slider__container ${isMobile ? 'is-mobile' : 'is-desktop'}`}
 			>
+				<div className="timeline__years">
+					<span className="timeline__year timeline__year--start">{years[0]}</span>
+					<span className="timeline__year timeline__year--end">{years[1]}</span>
+				</div>
 				<div
 					className={`timeline-period-slider__content`}
 					ref={containerRef}
